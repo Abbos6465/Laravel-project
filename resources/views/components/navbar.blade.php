@@ -15,7 +15,17 @@
             <a href="{{route('contact')}}" class="nav-item nav-link">Aloqa</a>
         </div>
         @auth
-        <a href="{{route('posts.create')}}" class="btn btn-primary mr-3 d-block">Post yaratish</a>
+        @if (auth()->user()->unreadNotifications()->count()>0)
+        <div class="position-relative">
+            <a href="{{route('notifications.index')}}" class="btn btn-outline-secondary w-50 d-flex mx-auto rounded-7 justify-content-center">
+                <i class="bi bi-bell fs-5"></i>
+            </a>
+            <span class="position-absolute bg-light fs-5 px-2 rounded-5 top-0 end-0 text-dark">
+                {{ auth()->user()->unreadNotifications()->count() }}
+            </span>
+        </div>
+        @endif
+        <a href="{{route('posts.create')}}" class="btn btn-primary ms-2  me-3 d-block">Post yaratish</a>
         <form action="{{route('logout')}}" method="POST">
             @csrf
             <button type="submit" class="btn btn-outline-dark mr-3 d-none d-lg-block">Chiqish</button>

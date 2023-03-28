@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Events\PostCreated;
 use App\Http\Requests\StorePostRequest;
+use App\Jobs\ChangePost;
+use App\Mail\PostCreated as MailPostCreated;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Notifications\PostCreated as NotificationsPostCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification as FacadesNotification;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -19,6 +24,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index','show']);
+        $this->middleware('password.confirm')->only('edit');
     }
 
     public function index()
@@ -57,7 +63,13 @@ class PostController extends Controller
             }
         }
 
-        // PostCreated::dispatch($post);
+        PostCreated::dispatch($post);
+
+        ChangePost::dispatch($post);
+
+        Mail::to($request->user())->queue((new MailPostCreated($post))->onQueue('sending_mails'));
+        
+        FacadesNotification::send(auth()->user(), new NotificationsPostCreated($post));
 
         return redirect()->route('posts.index');
     }

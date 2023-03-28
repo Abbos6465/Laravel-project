@@ -53,7 +53,7 @@
 
                 </div>
                 <div class="row">
-                    <div class="mx-auto">
+                    <div class="mx-auto d-flex justify-content-center">
                         {{$posts->links()}}
                     </div>
                 </div>

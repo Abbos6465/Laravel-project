@@ -38,7 +38,11 @@
                             <h1 class="section-title mb-3">{{$post->title}}</h1>
                         </div>
                         <div class="mb-5">
-                            <img src="{{asset('storage/' . $post->photo)}}" alt="" width="500">
+                            <img src="@if ($post->photo)
+                            {{asset('storage/'.$post->photo)}}
+                            @else
+                            /img/portfolio-1.jpg
+                            @endif"  alt="default img" width="500">
                         </div>
                         <div class="mb-5">
                             <p>{{$post->content}}</p>
