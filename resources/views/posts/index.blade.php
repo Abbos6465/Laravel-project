@@ -49,8 +49,6 @@
                         <a class="btn btn-sm btn-primary py-2" href="{{route('posts.show',['post'=>$post->id])}}">Read More</a>
                     </div>
                     @endforeach
-
-
                 </div>
                 <div class="row">
                     <div class="mx-auto d-flex justify-content-center">

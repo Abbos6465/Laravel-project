@@ -15,11 +15,13 @@
                         <h1 class="section-title mb-3">Xabarnomalar</h1>
                     </div>
                     <div>
+                      
                         <a href="{{ route('readAll' , ['notifications'=>$notifications->pluck('id')]) }}" class="btn btn-success">Barchasini o'qish</a>
+
                     </div>
                 </div>
                 @foreach ($notifications as $notification)
-                <div class="col-lg-12 col-md-12 mb-5 rounded border pb-2">
+                <div class="mb-5 rounded border pb-2 ps-2">
                     <div class="mb-2">
                         @if ($notification->read_at===null)
                         <div class="blog-date">
@@ -28,15 +30,15 @@
                             </h4>
                         </div>
                         @else
-                            <h4 class="d-flex justify-content-end">
-                                <form action="{{route('notification.destroy',['notification'=>$notification->id])}}" method="POST">
-                                    @csrf
-                                    <button class="text-danger border-warning bg-warning">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-                            </h4>
-                            @endif
+                        <h4 class="d-flex justify-content-end">
+                            <form action="{{route('notification.destroy',['notification'=>$notification->id])}}" method="POST">
+                                @csrf
+                                <button class="text-danger border-warning bg-warning">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </h4>
+                        @endif
                     </div>
 
                     <div class="d-flex mb-2">

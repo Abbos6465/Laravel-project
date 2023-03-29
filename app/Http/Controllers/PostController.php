@@ -13,6 +13,7 @@ use App\Models\Tag;
 use App\Notifications\PostCreated as NotificationsPostCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
@@ -29,7 +30,11 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->paginate(9);
+        // $posts = Post::latest()->paginate(9);
+
+        $posts = Cache::remember('posts',now()->addSeconds(300),function(){
+            return Post::latest()->paginate(9);
+        });
 
         return view('posts.index')->with('posts', $posts);
     }
