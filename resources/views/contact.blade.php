@@ -1,10 +1,10 @@
 <x-layouts.app>
     <x-slot:title>
-        Aloqaga chiqish
+        {{__("Aloqa")}}
     </x-slot>
 
     <x-page-header>
-        Aloqaga chiqish
+        {{__("Aloqa")}}
     </x-page-header>
 
      <!-- Contact Start -->

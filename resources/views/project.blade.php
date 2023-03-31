@@ -1,9 +1,9 @@
 <x-layouts.app>
     <x-slot:title>
-        Portfolio
+        {{__("Portfolio")}}
     </x-slot>
     <x-page-header>
-        Portfolio
+        {{__("Portfolio")}}
     </x-page-header>
 
     <!-- Portfolio Start -->

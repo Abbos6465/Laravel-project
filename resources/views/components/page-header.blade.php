@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-6 text-center text-md-right">
                     <div class="d-inline-flex align-items-center">
-                        <a class="btn btn-sm btn-outline-light" href="/">Bosh sahifa</a>
+                        <a class="btn btn-sm btn-outline-light" href="/">{{__("Bosh sahifa")}}</a>
                         <i class="fas fa-angle-double-right text-light mx-2"></i>
                         <a class="btn btn-sm btn-outline-light disabled" href="">{{$slot}}</a>
                     </div>

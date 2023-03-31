@@ -1,9 +1,9 @@
 <x-layouts.app>
     <x-slot:title>
-        Xizmatlar
+        {{__("Xizmatlar")}}
     </x-slot>
     <x-page-header>
-        Xizmatlar
+        {{__("Xizmatlar")}}
     </x-page-header>
     
      <!-- Services Start -->

@@ -1,10 +1,10 @@
 <x-layouts.app>
     <x-slot:title>
-        Biz haqimizda
+        {{__("Biz haqimizda")}}
     </x-slot>
 
     <x-page-header>
-        Biz haqimizda
+    {{__("Biz haqimizda")}}
     </x-page-header>
 
     <!-- About Start -->

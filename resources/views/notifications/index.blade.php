@@ -21,19 +21,17 @@
                     </div>
                 </div>
                 @foreach ($notifications as $notification)
-                <div class="mb-5 rounded border pb-2 ps-2">
+                <div class="mb-5 rounded border py-2 pe-2 ps-4">
                     <div class="mb-2">
                         @if ($notification->read_at===null)
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-1 text-light">
-                                <span>New</span>
+                            <h4 class="d-flex justify-content-end rounded">
+                                <span class="bg-warning text-success p-2 rounded">New</span>
                             </h4>
-                        </div>
                         @else
                         <h4 class="d-flex justify-content-end">
                             <form action="{{route('notification.destroy',['notification'=>$notification->id])}}" method="POST">
                                 @csrf
-                                <button class="text-danger border-warning bg-warning">
+                                <button class="text-danger border-warning bg-warning p-2 rounded">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>

@@ -7,12 +7,28 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav mr-auto py-0">
-            <a href="/" class="nav-item nav-link">Bosh sahifa</a>
-            <a href="{{route('about')}}" class="nav-item nav-link">Biz haqimizda</a>
-            <a href="{{route('service')}}" class="nav-item nav-link">Xizmatlar</a>
-            <a href="{{route('project')}}" class="nav-item nav-link">Portfolio</a>
-            <a href="{{route('posts.index')}}" class="nav-item nav-link">Blog</a>
-            <a href="{{route('contact')}}" class="nav-item nav-link">Aloqa</a>
+            <a href="/" class="nav-item nav-link">{{__("Bosh sahifa")}}</a>
+            <a href="{{route('about')}}" class="nav-item nav-link">{{__("Biz haqimizda")}}</a>
+            <a href="{{route('service')}}" class="nav-item nav-link">{{__("Xizmatlar")}}</a>
+            <a href="{{route('project')}}" class="nav-item nav-link">{{__("Portfolio")}}</a>
+            <a href="{{route('posts.index')}}" class="nav-item nav-link">{{__("Blog")}}</a>
+            <a href="{{route('contact')}}" class="nav-item nav-link">{{__("Aloqa")}}</a>
+        </div>
+        <div class="d-flex">
+            <form action="{{route('change_locale')}}" method="POST">
+                @csrf
+                <select name="change_locale" class="form-select text-uppercase"  onchange="this.form.submit()" >
+                    <option value="{{$current_locale}}">{{$current_locale}}</option>
+                    @foreach ($all_locales as $lang)
+                    @if($lang==$current_locale)
+                    @continue
+                    @endif
+                    <option value="{{$lang}}">
+                        {{$lang}}
+                    </option>
+                    @endforeach
+                </select>
+            </form>
         </div>
         @auth
         @if (auth()->user()->unreadNotifications()->count()>0)
@@ -25,13 +41,13 @@
             </span>
         </div>
         @endif
-        <a href="{{route('posts.create')}}" class="btn btn-primary ms-2  me-3 d-block">Post yaratish</a>
+        <a href="{{route('posts.create')}}" class="btn btn-primary ms-2  me-3 d-block">{{__("Post yaratish")}}</a>
         <form action="{{route('logout')}}" method="POST">
             @csrf
-            <button type="submit" class="btn btn-outline-dark mr-3 d-none d-lg-block">Chiqish</button>
+            <button type="submit" class="btn btn-outline-dark mr-3 d-none d-lg-block">{{__("Chiqish")}}</button>
         </form>
         @else
-        <a href="{{route('login')}}" class="btn btn-primary mr-3 d-none d-lg-block">Kirish</a>
+        <a href="{{route('login')}}" class="btn btn-primary mr-3 d-none d-lg-block">{{__("Kirish")}}</a>
         @endauth
     </div>
 </nav>

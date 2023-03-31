@@ -30,11 +30,11 @@ class PostController extends Controller
 
     public function index()
     {
-        // $posts = Post::latest()->paginate(9);
+        $posts = Post::latest()->paginate(9);
 
-        $posts = Cache::remember('posts',now()->addSeconds(300),function(){
-            return Post::latest()->paginate(9);
-        });
+        // $posts = Cache::remember('posts',now()->addSeconds(300),function(){
+        //     return Post::latest()->paginate(9);
+        // });
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -76,7 +76,7 @@ class PostController extends Controller
         
         FacadesNotification::send(auth()->user(), new NotificationsPostCreated($post));
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success','Post yaratildi!');
     }
 
     public function show(Post $post)

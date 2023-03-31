@@ -1,15 +1,20 @@
 <x-layouts.app>
     <x-slot:title>
-        Blog
+        {{__("Blog")}}
         </x-slot>
 
         <x-page-header>
-            Blog
+            {{__("Blog")}}
         </x-page-header>
 
         <!-- Blog Start -->
         <div class="container-fluid py-5">
             <div class="container">
+                @if (session('success'))
+                <div class="alert alert-success mb-5" role="alert">
+                    <h2 class="text-center text-success">{{__("Post Yaratildi")}}</h2>
+                </div>
+                @endif
                 <div class="row align-items-end mb-4">
                     <div class="col-lg-6">
                         <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">Latest Blog</h6>
@@ -25,8 +30,7 @@
                             {{asset('storage/'.$post->photo)}}
                             @else
                             /img/portfolio-1.jpg
-                            @endif" 
-                            alt="rasm">
+                            @endif" alt="rasm">
                             <div class="blog-date">
                                 <h4 class="font-weight-bold mb-n1">01</h4>
                                 <small class="text-white text-uppercase">Jan</small>
@@ -35,10 +39,10 @@
 
                         <div class="d-flex mb-2 flex-wrap">
                             @foreach ($post->tags as $tag)
-                                <span class="text-secondary text-uppercase font-weight-medium" href="">{{$tag->name}}</span>
-                                @if($loop->iteration!=$loop->last)
-                                    <span class="text-primary px-2">|</span>
-                                @endif
+                            <span class="text-secondary text-uppercase font-weight-medium" href="">{{$tag->name}}</span>
+                            @if($loop->iteration!=$loop->last)
+                            <span class="text-primary px-2">|</span>
+                            @endif
                             @endforeach
                         </div>
                         <div class="d-flex mb-2">

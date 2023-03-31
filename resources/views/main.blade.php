@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot:title>
-        Bosh sahifa
+        {{__("Bosh sahifa")}}
     </x-slot>
 
     <!-- Carousel Start -->
