@@ -16,6 +16,7 @@
                                 <div class="form-group py-2">
                                     <div class="input-field">
                                         <span class="far fa-user p-2"></span>
+                                        <input type="hidden" name="role_id" value="3">
                                         <input name="name" type="text" placeholder="Ism" required>
                                     </div>
                                 </div>

@@ -1,9 +1,9 @@
 <x-layouts.app>
     <x-slot:title>
-        Yangi post yaratish
+            {{__("Post yaratish")}} 
         </x-slot>
         <x-page-header>
-            Post yaratish
+            {{__("Post yaratish")}}
         </x-page-header>
         <div class="container">
             <div class="row">
@@ -60,7 +60,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
-                                <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Saqlash</button>
+                                <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">{{__("Saqlash")}}</button>
                             </div>
                         </form>
                     </div>

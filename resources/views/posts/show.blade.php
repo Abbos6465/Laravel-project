@@ -14,11 +14,11 @@
                         @auth
                         @canany(['update','delete'],$post)
                         <div class="d-flex justify-content-end gap-4">
-                            <a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-sm btn-primary">O'zgartirish</a>
+                            <a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-sm btn-primary">{{__("O'zgartirish")}}</a>
                             <form action="{{route('posts.destroy',['post'=>$post->id])}}" method="POST" onsubmit="return confirm('Siz rostdan ham bu postni o\'chirmoqchimisiz?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">O'chirish</button>
+                                <button type="submit" class="btn btn-sm btn-danger">{{__("O'chirish")}}</button>
                             </form>
                         </div>
                         @endcanany

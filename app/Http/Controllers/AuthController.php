@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -52,14 +53,14 @@ class AuthController extends Controller
 
         $validated = $request->validate([
             'name'=>'required',
+            'role_id'=> 'required',
             'email'=>'required|email:rfc,dns|unique:users,email',
             'password'=>'required|min:8',
             'password_confirmation'=>'required|same:password',
-
         ]);
 
-        $validated['password']=Hash::make($validated['password']);
 
+        $validated['password']=Hash::make($validated['password']);
         $user =  User::create($validated);
 
         auth()->login($user);

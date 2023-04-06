@@ -1,10 +1,10 @@
 <x-layouts.app>
     <x-slot:title>
-        Xabarnomalar
+        {{__("Xabarnomalar")}}
         </x-slot>
 
         <x-page-header>
-            Xabarnomalar
+        {{__("Xabarnomalar")}}
         </x-page-header>
 
         <!-- Blog Start -->

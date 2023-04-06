@@ -6,21 +6,13 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('lang/{locale}', function ($locale){
     foreach(config('app.all_locales') as $lang){
@@ -68,4 +60,4 @@ Route::middleware('auth')->group(function () {
 Route::resources([
     'posts' => PostController::class,   
     'comment' => CommentController::class,
-]);
+]); 

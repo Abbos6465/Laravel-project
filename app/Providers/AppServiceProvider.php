@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrapFour();
+        JsonResource::withoutWrapping();
 
         view()->composer('components.navbar', function ($view) {
             $view->with('current_locale', App::currentLocale());

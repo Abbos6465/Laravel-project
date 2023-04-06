@@ -49,6 +49,8 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         if ($request->hasFile('photo')) {
+            dump( $request->photo->path());
+            dump($request->photo->extension());
             $path = $request->file('photo')->store('post-photos');
         }
 
